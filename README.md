@@ -25,7 +25,7 @@
    docker-compose up -d
    ```
 ## Access
-- Frontend: http://localhost:3000
+- Frontend: http://localhost:3001
 - Backend: http://localhost:8000
 
 ## API Endpoints
