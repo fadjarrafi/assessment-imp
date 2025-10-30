@@ -24,9 +24,14 @@
 ```bash
    docker-compose up -d
    ```
+
 ## Access
 - Frontend: http://localhost:3001
 - Backend: http://localhost:8000
+
+## User Account
+ - email: test@example.com
+ - password: password
 
 ## API Endpoints
 
