@@ -62,13 +62,15 @@ services:
       context: .
       dockerfile: nextjs.Dockerfile
       args:
-        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000/api/v1}
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-https://post.fadjarrafi.xyz/api/v1}
+        # NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000/api/v1}
     container_name: assessment_nextjs
     restart: unless-stopped
     depends_on:
       - laravel
     environment:
-      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000/api/v1}
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-https://post.fadjarrafi.xyz/api/v1}
+      # NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000/api/v1}
       NODE_ENV: production
     ports:
       - "3001:3000"
