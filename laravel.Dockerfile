@@ -12,27 +12,36 @@ RUN apt-get update && apt-get install -y \
     libxml2-dev \
     zip \
     unzip \
-    libpq-dev \
-    libzip-dev
+    nginx
 
 # Clear cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
-RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
+RUN docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
 
-# Install Composer
+# Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 # Copy existing application directory contents
-COPY . /var/www/html
+COPY ./laravel /var/www/html
 
-# Copy existing application directory permissions
+# Copy nginx configuration
+COPY ./laravel/docker/nginx.conf /etc/nginx/sites-available/default
+
+# Install dependencies
+RUN composer install --no-interaction --optimize-autoloader --no-dev
+
+# Set permissions
 RUN chown -R www-data:www-data /var/www/html \
     && chmod -R 755 /var/www/html/storage \
     && chmod -R 755 /var/www/html/bootstrap/cache
 
-# Expose port 9000 and start php-fpm server
-EXPOSE 9000
+# Expose port 80
+EXPOSE 80
 
-CMD ["php-fpm"]
+# Copy entrypoint script
+COPY ./laravel/docker/entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
