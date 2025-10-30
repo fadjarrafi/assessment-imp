@@ -17,6 +17,7 @@ class PostController extends Controller
     {
         $perPage = $request->query('per_page', 10);
         $posts = Post::with('user:id,name,email')
+            ->where('user_id', $request->user()->id)
             ->latest()
             ->paginate($perPage);
 
