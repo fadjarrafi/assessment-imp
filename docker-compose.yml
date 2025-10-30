@@ -12,7 +12,7 @@ services:
       MYSQL_USER: laravel_user
       MYSQL_PASSWORD: laravel_password
     ports:
-      - "3306:3306"
+      - "3307:3306"
     volumes:
       - mysql_data:/var/lib/mysql
     networks:
@@ -62,15 +62,13 @@ services:
       context: .
       dockerfile: nextjs.Dockerfile
       args:
-        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-https://post.fadjarrafi.xyz/api/v1}
-        # NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000/api/v1}
+        NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000/api/v1}
     container_name: assessment_nextjs
     restart: unless-stopped
     depends_on:
       - laravel
     environment:
-      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-https://post.fadjarrafi.xyz/api/v1}
-      # NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000/api/v1}
+      NEXT_PUBLIC_API_URL: ${NEXT_PUBLIC_API_URL:-http://localhost:8000/api/v1}
       NODE_ENV: production
     ports:
       - "3001:3000"
