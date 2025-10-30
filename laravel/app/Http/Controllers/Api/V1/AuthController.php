@@ -12,9 +12,6 @@ use Illuminate\Validation\ValidationException;
 
 class AuthController extends Controller
 {
-    /**
-     * Register a new user.
-     */
     public function signup(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
@@ -48,9 +45,6 @@ class AuthController extends Controller
         ], 201);
     }
 
-    /**
-     * Sign in a user.
-     */
     public function signin(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
@@ -86,9 +80,6 @@ class AuthController extends Controller
         ]);
     }
 
-    /**
-     * Sign out a user (revoke token).
-     */
     public function signout(Request $request): JsonResponse
     {
         // Revoke the current token

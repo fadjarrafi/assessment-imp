@@ -10,9 +10,6 @@ use Illuminate\Support\Facades\Validator;
 
 class PostController extends Controller
 {
-    /**
-     * Display a listing of posts with pagination.
-     */
     public function index(Request $request): JsonResponse
     {
         $perPage = $request->query('per_page', 10);
@@ -27,9 +24,6 @@ class PostController extends Controller
         ]);
     }
 
-    /**
-     * Store a newly created post.
-     */
     public function store(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
@@ -59,9 +53,6 @@ class PostController extends Controller
         ], 201);
     }
 
-    /**
-     * Display the specified post.
-     */
     public function show(Post $post): JsonResponse
     {
         $post->load('user:id,name,email');
@@ -72,9 +63,6 @@ class PostController extends Controller
         ]);
     }
 
-    /**
-     * Update the specified post.
-     */
     public function update(Request $request, Post $post): JsonResponse
     {
         // Check if user owns the post
