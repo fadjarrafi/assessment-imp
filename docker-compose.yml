@@ -42,7 +42,7 @@ services:
 
       DB_CONNECTION: mysql
       DB_HOST: mysql
-      DB_PORT: 3306
+      DB_PORT: 3307
       DB_DATABASE: laravel_db
       DB_USERNAME: laravel_user
       DB_PASSWORD: laravel_password
@@ -70,7 +70,7 @@ services:
       NEXT_PUBLIC_API_URL: http://localhost:8000/api/v1
       NODE_ENV: production
     ports:
-      - "3000:3000"
+      - "3001:3001"
     networks:
       - app_network
 
