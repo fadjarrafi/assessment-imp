@@ -30,7 +30,7 @@ COPY ./laravel /var/www/html
 COPY ./laravel/docker/nginx.conf /etc/nginx/sites-available/default
 
 # Install dependencies
-RUN composer install --no-interaction --optimize-autoloader --no-dev
+RUN composer install --no-interaction --optimize-autoloader
 
 # Set permissions
 RUN chown -R www-data:www-data /var/www/html \
