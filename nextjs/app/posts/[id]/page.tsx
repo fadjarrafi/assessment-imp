@@ -38,15 +38,14 @@ export default function PostDetailPage() {
     }
 
     try {
-      const response = await fetch(
-        `http://localhost:8000/api/v1/posts/${postId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const apiUrl =
+        process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000/api/v1";
+      const response = await fetch(`${apiUrl}/posts/${postId}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+          "Content-Type": "application/json",
+        },
+      });
 
       if (response.ok) {
         const result = await response.json();
