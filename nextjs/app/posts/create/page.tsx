@@ -258,33 +258,6 @@ export default function CreatePostPage() {
             </form>
           </div>
         </div>
-
-        {/* Tips Card */}
-        <div className="card bg-blue-50 border border-blue-200 mt-6">
-          <div className="card-body">
-            <h3 className="font-semibold text-blue-900 flex items-center gap-2">
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-                />
-              </svg>
-              Writing Tips
-            </h3>
-            <ul className="text-sm text-blue-800 space-y-1 ml-7">
-              <li>• Create a clear and descriptive title</li>
-              <li>• Organize your content with paragraphs</li>
-              <li>• Proofread before publishing</li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   );
